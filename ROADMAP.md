@@ -79,6 +79,7 @@ Final Damage = Weapon × SkillCoef × (1 + Additive Bonuses)
 - Apache Spark (data processing, scoring, clustering at scale)
 - Delta Lake / Parquet (feature store and inference output)
 - Ollama (local LLMs like LLaMA 3, Mistral, Phi-3)
+- Nginx API Gateway (TLS, auth, OWASP filtering, routing)
 - Optional: Overwolf SDK for in-game overlay
 
 ---
@@ -88,7 +89,7 @@ Final Damage = Weapon × SkillCoef × (1 + Additive Bonuses)
 ### ⚙️ Architecture
 - **Docker** for each service (FastAPI, Ollama, Nginx, Postgres, MongoDB)
 - **Kubernetes** for orchestration (via GKE, EKS, or local K3s)
-- **Nginx or Apache** for TLS, authentication, rate-limiting
+- **Nginx API Gateway** for routing, SSL, authentication, and OWASP protections
 - **FastAPI** core backend with AI and data logic
 - **Ollama** for local LLMs and fine-tuned response generation
 - **PostgreSQL** for user data, encrypted battletags, predictions, structured queries
@@ -124,6 +125,7 @@ terraform/
 │   ├── postgres/        # Managed DB with encrypted battletags
 │   ├── mongo/           # Document DB
 │   ├── spark/           # Optional EMR or Dataproc cluster
+│   ├── nginx/           # API Gateway and proxy layer
 │   └── compute/         # Optional Ollama VM
 ```
 Example:
