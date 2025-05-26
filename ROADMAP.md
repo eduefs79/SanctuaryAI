@@ -73,7 +73,8 @@ Final Damage = Weapon × SkillCoef × (1 + Additive Bonuses)
 - FastAPI
 - Scikit-learn / LightFM / TensorFlow (for recommendations)
 - Streamlit or Dash (for UI)
-- SQLite/PostgreSQL
+- PostgreSQL (for structured data like users, PIT predictions)
+- MongoDB or CosmosDB (for flexible build data, OCR results, LLM logs)
 - Optional: Overwolf SDK for in-game overlay
 
 ---
@@ -81,12 +82,13 @@ Final Damage = Weapon × SkillCoef × (1 + Additive Bonuses)
 ## ☁️ DevOps Infrastructure
 
 ### ⚙️ Architecture
-- **Docker** for each service (FastAPI, Ollama, Nginx, Postgres)
+- **Docker** for each service (FastAPI, Ollama, Nginx, Postgres, MongoDB)
 - **Kubernetes** for orchestration (via GKE, EKS, or local K3s)
 - **Nginx or Apache** for TLS, authentication, rate-limiting
 - **FastAPI** core backend with AI and data logic
 - **Ollama** for local LLMs (LLaMA 3, Mistral, Phi-3, etc.)
-- **PostgreSQL** for build history and structured data
+- **PostgreSQL** for user data, predictions, structured queries
+- **MongoDB/CosmosDB** for unstructured build data, JSON uploads, LLM logs
 
 ### 🔁 CI/CD with GitHub Actions
 ```yaml
@@ -115,6 +117,7 @@ terraform/
 │   ├── network/         # VPC, subnets
 │   ├── kubernetes/      # Cluster
 │   ├── postgres/        # Managed DB
+│   ├── mongo/           # Document DB
 │   └── compute/         # Optional Ollama VM
 ```
 Example:
