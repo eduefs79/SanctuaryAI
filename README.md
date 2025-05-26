@@ -17,15 +17,27 @@
 - Skill tree (active and passive skills, enhancements)
 - Optional: Upload character screen or stat image (v2 feature)
 
-## 🧠 Future Features
+## 🧠 Key Modules
+- **Image Parser**: Extracts skill, gear, stat, and aspect data from screenshots
+- **Damage Calculator**: Uses weapon damage, skill coefficients, and multipliers (crit, vuln, overpower) to compute realistic damage estimates
+- **Recommender Engine**: Suggests gear and build elements based on other players with similar profiles
+- **Build Optimizer**: Ranks builds based on damage, survivability, and effectiveness
+- **Meta Tracker**: Monitors trends in top builds, skills, and aspects across the community or uploaded data
 
-- Gear image OCR and stat extraction
-- PIT leaderboard comparison
-- Glyph synergy mapping
-- Community build analyzer (compare vs top players)
-- Streamlit UI for non-technical users
+## 📦 Tech Stack (Planned)
+- Python (core logic)
+- OpenCV + Tesseract (image parsing)
+- Scikit-learn or LightFM (recommendation engine)
+- FastAPI (API backend)
+- Streamlit or Dash (Web UI)
 
-## 🚀 Quickstart (Planned)
+## 🚀 MVP Scope
+- Support one class (e.g., Necromancer)
+- Manual input UI for gear/stats (OCR later)
+- Damage calculator for one skill
+- Simple recommender for aspects and gear
+
+## 🚀 Installation & Usage (Planned)
 
 ```bash
 # Install requirements (TBD)
@@ -45,6 +57,12 @@ sanctuaryai/
 ├── notebooks/       # Experimentation and model training
 └── README.md
 ```
+
+## 🔮 Planned Enhancements
+- PIT prediction model with live tuning
+- Screenshot OCR with auto-parsing
+- Community leaderboard and trending builds
+- Discord bot integration
 
 ## 📜 License
 
