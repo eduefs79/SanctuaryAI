@@ -71,10 +71,13 @@ Final Damage = Weapon × SkillCoef × (1 + Additive Bonuses)
 - Python
 - OpenCV + Tesseract
 - FastAPI
-- Scikit-learn / LightFM / TensorFlow (for recommendations)
+- Scikit-learn / LightGBM / PySpark MLlib (for regression and classification)
 - Streamlit or Dash (for UI)
-- PostgreSQL (for structured data like users, PIT predictions)
-- MongoDB or CosmosDB (for flexible build data, OCR results, LLM logs)
+- PostgreSQL (structured data)
+- MongoDB or CosmosDB (flexible data like OCR/LLM logs)
+- Apache Spark (data processing, scoring, clustering at scale)
+- Delta Lake / Parquet (feature store and inference output)
+- Ollama (local LLMs like LLaMA 3, Mistral, Phi-3)
 - Optional: Overwolf SDK for in-game overlay
 
 ---
@@ -86,9 +89,10 @@ Final Damage = Weapon × SkillCoef × (1 + Additive Bonuses)
 - **Kubernetes** for orchestration (via GKE, EKS, or local K3s)
 - **Nginx or Apache** for TLS, authentication, rate-limiting
 - **FastAPI** core backend with AI and data logic
-- **Ollama** for local LLMs (LLaMA 3, Mistral, Phi-3, etc.)
+- **Ollama** for local LLMs and fine-tuned response generation
 - **PostgreSQL** for user data, predictions, structured queries
 - **MongoDB/CosmosDB** for unstructured build data, JSON uploads, LLM logs
+- **Apache Spark** for ingestion, feature extraction, ML pipelines, scoring
 
 ### 🔁 CI/CD with GitHub Actions
 ```yaml
@@ -118,6 +122,7 @@ terraform/
 │   ├── kubernetes/      # Cluster
 │   ├── postgres/        # Managed DB
 │   ├── mongo/           # Document DB
+│   ├── spark/           # Optional EMR or Dataproc cluster
 │   └── compute/         # Optional Ollama VM
 ```
 Example:
@@ -135,6 +140,9 @@ resource "google_container_cluster" "primary" {
 - PIT level predictor (how far your build can go)
 - Upload-and-analyze from video clips (via frame extraction)
 - Augmented Reality overlays for gear comparison
+- Fine-tune LLaMA with LoRA using user builds and PIT predictions
+- SHAP-enhanced explanations injected into LLM prompts
+- Natural language interface over structured PIT/gear data
 
 ---
 
