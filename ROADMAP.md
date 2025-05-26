@@ -78,6 +78,56 @@ Final Damage = Weapon × SkillCoef × (1 + Additive Bonuses)
 
 ---
 
+## ☁️ DevOps Infrastructure
+
+### ⚙️ Architecture
+- **Docker** for each service (FastAPI, Ollama, Nginx, Postgres)
+- **Kubernetes** for orchestration (via GKE, EKS, or local K3s)
+- **Nginx or Apache** for TLS, authentication, rate-limiting
+- **FastAPI** core backend with AI and data logic
+- **Ollama** for local LLMs (LLaMA 3, Mistral, Phi-3, etc.)
+- **PostgreSQL** for build history and structured data
+
+### 🔁 CI/CD with GitHub Actions
+```yaml
+on:
+  push:
+    branches: [main]
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Docker Image
+        run: docker build -t yourrepo/sanctuary-backend ./backend
+      - name: Push to DockerHub
+        run: docker push yourrepo/sanctuary-backend
+      - name: Deploy to K8s
+        run: kubectl apply -f k8s/deployment.yaml
+```
+
+### ☁️ Terraform Infrastructure-as-Code
+Modular provisioning:
+```
+terraform/
+├── main.tf              # Entry point
+├── modules/
+│   ├── network/         # VPC, subnets
+│   ├── kubernetes/      # Cluster
+│   ├── postgres/        # Managed DB
+│   └── compute/         # Optional Ollama VM
+```
+Example:
+```hcl
+resource "google_container_cluster" "primary" {
+  name     = "sanctuary-cluster"
+  location = var.region
+  ...
+}
+```
+
+---
+
 ## 🧪 Stretch Goals
 - PIT level predictor (how far your build can go)
 - Upload-and-analyze from video clips (via frame extraction)
