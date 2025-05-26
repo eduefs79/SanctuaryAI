@@ -52,6 +52,7 @@ Final Damage = Weapon × SkillCoef × (1 + Additive Bonuses)
 - FastAPI for serving ML/logic
 - Streamlit or Dash for Web UI (or Overwolf overlay)
 - Discord bot for in-game help
+- Battle.net OAuth 2.0 authentication for user login
 
 ---
 
@@ -73,7 +74,7 @@ Final Damage = Weapon × SkillCoef × (1 + Additive Bonuses)
 - FastAPI
 - Scikit-learn / LightGBM / PySpark MLlib (for regression and classification)
 - Streamlit or Dash (for UI)
-- PostgreSQL (structured data)
+- PostgreSQL (structured data, encrypted battletag only)
 - MongoDB or CosmosDB (flexible data like OCR/LLM logs)
 - Apache Spark (data processing, scoring, clustering at scale)
 - Delta Lake / Parquet (feature store and inference output)
@@ -90,7 +91,7 @@ Final Damage = Weapon × SkillCoef × (1 + Additive Bonuses)
 - **Nginx or Apache** for TLS, authentication, rate-limiting
 - **FastAPI** core backend with AI and data logic
 - **Ollama** for local LLMs and fine-tuned response generation
-- **PostgreSQL** for user data, predictions, structured queries
+- **PostgreSQL** for user data, encrypted battletags, predictions, structured queries
 - **MongoDB/CosmosDB** for unstructured build data, JSON uploads, LLM logs
 - **Apache Spark** for ingestion, feature extraction, ML pipelines, scoring
 
@@ -120,7 +121,7 @@ terraform/
 ├── modules/
 │   ├── network/         # VPC, subnets
 │   ├── kubernetes/      # Cluster
-│   ├── postgres/        # Managed DB
+│   ├── postgres/        # Managed DB with encrypted battletags
 │   ├── mongo/           # Document DB
 │   ├── spark/           # Optional EMR or Dataproc cluster
 │   └── compute/         # Optional Ollama VM
@@ -143,6 +144,7 @@ resource "google_container_cluster" "primary" {
 - Fine-tune LLaMA with LoRA using user builds and PIT predictions
 - SHAP-enhanced explanations injected into LLM prompts
 - Natural language interface over structured PIT/gear data
+- Optional public leaderboard (linked by encrypted Blizzard battletag)
 
 ---
 
